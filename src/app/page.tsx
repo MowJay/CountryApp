@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function getData() {
-  const res = await fetch("https://restcountries.com/v3.1/name/ger");
+  const res = await fetch("https://restcountries.com/v3.1/name/be");
 
   return res.json();
 }
@@ -25,7 +25,7 @@ export default async function Home() {
       <div className="my-8 grid grid-cols-[256px] justify-center md:grid-cols-[256px_256px] md:justify-around lg:grid-cols-[256px_256px_256px_256px] lg:justify-between gap-y-8 gap-x-4">
         {data.map((item) => (
           <Link
-            href="/details/"
+            href={`/details/${item.cca3}`}
             key={item.cca3}
             className="bg-lightElement dark:bg-darkElement rounded shadow w-64 align-end col hover:shadow-xl"
           >

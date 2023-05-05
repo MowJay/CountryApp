@@ -1,6 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Country App
 
-## Getting Started
+An application used to see information about all countries, built with [Next.js](https://nextjs.org/), [React](https://react.dev/), [tailwindcss](https://tailwindcss.com/), and Javascript.
+
+## About the Project
+
+<h3>In this Project Users are able to</h1>
+
+- See all countries on the homepage
+- Search for a country using an input field (Searching using the keywords Grmany or Grmny also works)
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Clicking on border countries on the detail page links the user to the detail of those countries
+- Toggle the color scheme between light and dark mode
+- Searching using the keywords Grmany or Grmny also works
+
+## Installation and Setup Instructions
 
 First, run the development server:
 
@@ -16,19 +30,17 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Live Link
 
-## Learn More
+This project is deployed using [vercel](https://vercel.com/) and is available at [https://country-app-topaz.vercel.app/](https://country-app-topaz.vercel.app/)
 
-To learn more about Next.js, take a look at the following resources:
+## Project Screen Shots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![image](https://user-images.githubusercontent.com/40686963/236569969-f0f916e1-8514-4149-8f87-4d1057eeecb0.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![image](https://user-images.githubusercontent.com/40686963/236570179-084bf6d6-4e12-468b-b1ef-54e711368d68.png)
 
-## Deploy on Vercel
+![image](https://user-images.githubusercontent.com/40686963/236570051-b84ccd15-4e74-4033-826a-2a5f53242a20.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![image](https://user-images.githubusercontent.com/40686963/236570258-74d7ed8f-5f1e-47d8-afb4-8644dce9edfd.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

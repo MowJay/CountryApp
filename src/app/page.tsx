@@ -14,7 +14,7 @@ export default async function Home() {
   const renderCountries = (data: Country[]) => {
     if (!data || !Array.isArray(data)) {
       return (
-        <div className="my-8 text-center bg-lightElement p-4 shadow rounded">
+        <div className="my-8 text-center bg-lightElement dark:bg-darkElement p-4 shadow rounded">
           No countries found
         </div>
       );
@@ -26,8 +26,7 @@ export default async function Home() {
           <Link
             href="/details/"
             key={item.cca3}
-            as={"div"}
-            className="bg-lightElement rounded shadow w-64 align-end col hover:shadow-xl"
+            className="bg-lightElement dark:bg-darkElement rounded shadow w-64 align-end col hover:shadow-xl"
           >
             <div className="relative h-48">
               <Image
@@ -40,9 +39,17 @@ export default async function Home() {
             <div className="p-4">
               <strong>{item.name.common}</strong>
               <div className="mt-2">
-                <span className="block">Population: {item.population}</span>
-                <span className="block">Region: {item.region}</span>
-                <span className="block">Capital: {item.capital[0]}</span>
+                <span className="block">
+                  <span className="font-semibold">Population:</span>{" "}
+                  {item.population}
+                </span>
+                <span className="block">
+                  <span className="font-semibold">Region:</span> {item.region}
+                </span>
+                <span className="block">
+                  <span className="font-semibold">Capital:</span>{" "}
+                  {item.capital[0]}
+                </span>
               </div>
             </div>
           </Link>
@@ -53,47 +60,34 @@ export default async function Home() {
 
   return (
     <>
-      <header className="sticky top-0 shadow bg-lightBackground z-10">
-        <div className="max-w-screen-xl flex justify-between px-6 py-4 mx-auto">
-          <h1 className="text-xl font-bold">Where in the world?</h1>
-          <div className="font-semibold">Dark Mode</div>
-        </div>
-      </header>
-
-      <main className="max-w-screen-xl mx-auto px-6">
-        <div className="md:flex justify-between mt-8">
-          <div className="bg-lightElement py-2 px-4 rounded shadow">
-            <span className="me-2">ic</span>
-            <input
-              className="outline-0"
-              placeholder="Search for a country..."
-            ></input>
-          </div>
-
-          <select
-            className="mt-8 md:mt-0 py-2 px-4 rounded shadow outline-0"
-            placeholder="filter by region"
-          >
-            {[
-              { value: "africa", label: "africa" },
-              { value: "america", label: "america" },
-              { value: "asia", label: "asia" },
-              { value: "europe", label: "europe" },
-              { value: "oceania", label: "oceania" },
-            ].map((item) => (
-              <option
-                key={item.value}
-                value={item.value}
-                className="capitalize"
-              >
-                {item.label}
-              </option>
-            ))}
-          </select>
+      <div className="md:flex justify-between mt-8">
+        <div className="bg-lightElement dark:bg-darkElement py-2 px-4 rounded shadow">
+          <span className="me-2">ic</span>
+          <input
+            className="outline-0 bg-transparent"
+            placeholder="Search for a country..."
+          ></input>
         </div>
 
-        {renderCountries(data)}
-      </main>
+        <select
+          className="mt-8 md:mt-0 py-2 px-4 rounded shadow outline-0 bg-lightElement dark:bg-darkElement"
+          placeholder="filter by region"
+        >
+          {[
+            { value: "africa", label: "africa" },
+            { value: "america", label: "america" },
+            { value: "asia", label: "asia" },
+            { value: "europe", label: "europe" },
+            { value: "oceania", label: "oceania" },
+          ].map((item) => (
+            <option key={item.value} value={item.value} className="capitalize">
+              {item.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {renderCountries(data)}
     </>
   );
 }

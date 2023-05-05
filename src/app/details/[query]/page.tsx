@@ -66,12 +66,12 @@ const Details = async ({ params }: { params: { query: string } }) => {
 
           <div className="mt-6">
             <span className="font-semibold">Border Countries:</span>
-            <div className="mt-4">
+            <div className="mt-4 flex gap-3 flex-wrap">
               {details.borders?.map((item, index) => (
                 <Link
-                  href=""
+                  href={`/details/${item}`}
                   key={index}
-                  className="inline-block bg-lightElement dark:bg-darkElement rounded shadow py-2 px-6 cursor-pointer ms-2 first:ms-0"
+                  className="inline-block bg-lightElement dark:bg-darkElement rounded shadow py-2 px-6 cursor-pointer"
                 >
                   {item}
                 </Link>

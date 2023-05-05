@@ -5,6 +5,7 @@ import { checkQueryValidity } from "@/utils/queryUtils";
 import { Suspense } from "react";
 import CountriesList from "@/components/countriesList";
 import { notFound } from "next/navigation";
+import Spinner from "@/components/spinner";
 
 async function getData(key: string, value?: string) {
   let url = "";
@@ -45,7 +46,7 @@ export default async function Home({
         <SearchBox name={name} region={region} />
         <RegionSelect region={region} />
       </div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Spinner />}>
         <CountriesList countries={data} />
       </Suspense>
     </>

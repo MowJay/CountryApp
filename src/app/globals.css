@@ -7,3 +7,21 @@
     @apply bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText;
   }
 }
+
+/** Scrollbar **/
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(230, 230, 230);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(170, 170, 170);
+}

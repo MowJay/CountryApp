@@ -1,8 +1,8 @@
+import GoBackButton from "@/components/buttons/goBackButton";
 import { Country } from "@/types";
 import { separateDigits } from "@/utils/numberUtils";
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowLeft } from "react-icons/fa";
 
 async function getData(query: string) {
   const res = await fetch(`https://restcountries.com/v3.1/alpha/${query}`);
@@ -85,14 +85,7 @@ const Details = async ({ params }: { params: { query: string } }) => {
 
   return (
     <>
-      <Link
-        href="/"
-        className="inline-block bg-lightElement dark:bg-darkElement rounded shadow py-2 px-6 mt-8 cursor-pointer"
-        replace
-      >
-        <FaArrowLeft className="inline me-2" />
-        Back
-      </Link>
+      <GoBackButton />
       {renderDetails(details)}
     </>
   );

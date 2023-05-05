@@ -1,39 +1,35 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Select from "./../select/index";
 
 const RegionSelect = ({ region }: { region: string }) => {
   const router = useRouter();
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    event.preventDefault();
-    if (event.target.value) {
-      router.replace(`/region/${event.target.value}`);
+  const handleChange = (value: string) => {
+    if (value) {
+      router.replace(`/region/${value}`);
     } else {
       router.replace("/");
     }
   };
 
   return (
-    <select
-      className="mt-8 md:mt-0 py-2 px-4 rounded shadow outline-0 bg-lightElement dark:bg-darkElement"
-      placeholder="filter by region"
-      onChange={handleChange}
+    <Select
+      id="regionSelect"
       value={region}
-    >
-      {[
-        { value: "", label: "Filter by Region" },
+      handleChange={handleChange}
+      options={[
+        { value: "", label: "all" },
         { value: "africa", label: "africa" },
         { value: "america", label: "america" },
         { value: "asia", label: "asia" },
         { value: "europe", label: "europe" },
         { value: "oceania", label: "oceania" },
-      ].map((item) => (
-        <option key={item.value} value={item.value} className="capitalize">
-          {item.label}
-        </option>
-      ))}
-    </select>
+      ]}
+      placeHolder="filter by region"
+      extraClass="min-w-[10rem] mt-8 md:mt-0 "
+    />
   );
 };
 

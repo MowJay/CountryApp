@@ -55,7 +55,7 @@ const Details = async ({ params }: { params: { query: string } }) => {
                 value: Object.values(details.languages).toString(),
               },
               { label: "Sub Region", value: details.subregion },
-              { label: "Capital", value: details.capital.toString() },
+              { label: "Capital", value: details.capital?.toString() },
             ].map((item, index) => (
               <div key={index}>
                 <span className="font-semibold me-2">{item.label}:</span>

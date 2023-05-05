@@ -1,14 +1,23 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { FaSearch } from "react-icons/fa";
 import { useState, FormEvent, useEffect } from "react";
 
-const SearchBox = () => {
-  const [query, setQuery] = useState("");
+const SearchBox = ({ name, region }: { name: string; region: string }) => {
+  const router = useRouter();
+
+  const [query, setQuery] = useState(name);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      console.log(query);
+      if (!query) {
+        if (!region) {
+          router.replace("/");
+        }
+      } else {
+        router.replace(`/name/${query}`, { forceOptimisticNavigation: true });
+      }
     }, 500);
 
     return () => {

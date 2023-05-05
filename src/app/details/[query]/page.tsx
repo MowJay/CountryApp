@@ -27,6 +27,7 @@ const Details = async ({ params }: { params: { query: string } }) => {
             src={details.flags.png}
             alt={details.flags.alt}
             fill
+            sizes="w-full h-full"
             priority
           />
         </div>

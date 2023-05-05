@@ -19,7 +19,7 @@ const CountriesList = ({ countries }: { countries: Country[] }) => {
           key={item.cca3}
           className="bg-lightElement dark:bg-darkElement rounded shadow w-64 align-end col hover:shadow-xl"
         >
-          <div className="relative h-48">
+          <div className="relative w-64 aspect-[4/3]">
             <Image
               src={item.flags.png}
               alt={item.flags.alt}

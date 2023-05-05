@@ -1,9 +1,3 @@
 export function checkQueryValidity(query: string[]) {
-  return (
-    query &&
-    Array.isArray(query) &&
-    query.length == 2 &&
-    ["name", "region"].includes(query[0]) &&
-    query[1]
-  );
+  return query && Array.isArray(query) && query.length == 2 && query[1];
 }

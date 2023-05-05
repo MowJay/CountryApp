@@ -4,6 +4,7 @@ import { Country } from "@/types";
 import { checkQueryValidity } from "@/utils/queryUtils";
 import { Suspense } from "react";
 import CountriesList from "@/components/countriesList";
+import { notFound } from "next/navigation";
 
 async function getData(key: string, value?: string) {
   let url = "";
@@ -33,6 +34,7 @@ export default async function Home({
     data = await getData(query[0], query[1]);
     if (query[0] === "name") name = query[1];
     else if (query[0] === "region") region = query[1];
+    else notFound();
   } else {
     data = await getData("all");
   }

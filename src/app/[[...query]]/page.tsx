@@ -61,7 +61,7 @@ export default async function Home({
   }
   data = await getData(searchUrl);
 
-  if (sort) {
+  if (data && Array.isArray(data) && sort) {
     data = sortCountries(data, sort);
   }
 

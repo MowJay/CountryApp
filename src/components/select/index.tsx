@@ -34,7 +34,11 @@ const Select = ({
         onClick={toggleOpen}
         className="bg-lightElement dark:bg-darkElement rounded shadow p-2 cursor-pointer text-center capitalize"
       >
-        <span>{value ? value : placeHolder}</span>
+        <span>
+          {value && options.find((option) => option.value === value)
+            ? options.find((option) => option.value === value)?.label
+            : placeHolder}
+        </span>
         {open ? (
           <MdKeyboardArrowUp className={styleSheet.icon} />
         ) : (

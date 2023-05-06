@@ -1,7 +1,3 @@
-export function checkQueryValidity(query: string[]) {
-  return query && Array.isArray(query) && query.length == 2 && query[1];
-}
-
 export function removeFromQuery(query: string, key: string) {
   let temp = query;
 
@@ -18,5 +14,7 @@ export function removeFromQuery(query: string, key: string) {
 }
 
 export function addOrUpdate(query: string, key: string, value: string) {
-  return removeFromQuery(query, key).concat(`/${key}/${value}`);
+  let temp = removeFromQuery(query, key).concat(`/${key}/${value}`);
+  if (temp.startsWith("//")) temp = temp.slice(1);
+  return temp;
 }

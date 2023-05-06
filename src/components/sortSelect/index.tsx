@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Select from "../select";
 import { addOrUpdate, removeFromQuery } from "@/utils/queryUtils";
 
-const SortSelect = ({sort}:{sort:string}) => {
+const SortSelect = ({ sort }: { sort: string }) => {
   const router = useRouter();
   const pathName = usePathname();
 

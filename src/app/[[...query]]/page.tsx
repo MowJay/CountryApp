@@ -1,19 +1,20 @@
 import SearchBox from "@/components/searchBox";
 import RegionSelect from "@/components/regionSelect";
 import { Country } from "@/types";
-import { checkQueryValidity } from "@/utils/queryUtils";
 import { Suspense } from "react";
 import CountriesList from "@/components/countriesList";
 import { notFound } from "next/navigation";
 import Spinner from "@/components/spinner";
+import SortSelect from "@/components/sortSelect";
+import { sortCountries } from "@/utils/countryUtils";
 
-async function getData(key: string, value?: string) {
+async function getData(searchUrl: string) {
   let url = "";
 
-  if (key === "all") {
+  if (!searchUrl) {
     url = "https://restcountries.com/v3.1/all";
   } else {
-    url = `https://restcountries.com/v3.1/${key}/${value}`;
+    url = `https://restcountries.com/v3.1/${searchUrl}`;
   }
 
   const res = await fetch(url);
@@ -30,21 +31,48 @@ export default async function Home({
   let data: Country[] = [];
   let name = "";
   let region = "";
+  let sort = "";
+  let searchUrl = "";
 
-  if (checkQueryValidity(query)) {
-    data = await getData(query[0], query[1]);
-    if (query[0] === "name") name = query[1];
-    else if (query[0] === "region") region = query[1];
-    else notFound();
-  } else {
-    data = await getData("all");
+  if (query && Array.isArray(query)) {
+    query.forEach((item, index) => {
+      if (index % 2 !== 0) {
+        return;
+      }
+      if (query[index + 1]) {
+        switch (item) {
+          case "region":
+            region = query[index + 1];
+            searchUrl = `/region/${query[index + 1]}`;
+            break;
+          case "name":
+            name = query[index + 1];
+            searchUrl = `/name/${query[index + 1]}`;
+            break;
+          case "sort":
+            sort = query[index + 1];
+            break;
+          default:
+            notFound();
+            break;
+        }
+      }
+    });
+  }
+  data = await getData(searchUrl);
+
+  if (sort) {
+    data = sortCountries(data, sort);
   }
 
   return (
     <>
       <div className="md:flex justify-between mt-8">
         <SearchBox name={name} region={region} />
-        <RegionSelect region={region} />
+        <div>
+          <SortSelect sort={sort} />
+          <RegionSelect region={region} />
+        </div>
       </div>
       <Suspense fallback={<Spinner />}>
         <CountriesList countries={data} />

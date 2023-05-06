@@ -1,11 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { FaSearch } from "react-icons/fa";
 import { useState, FormEvent, useEffect } from "react";
+import { addOrUpdate, removeFromQuery } from "@/utils/queryUtils";
 
 const SearchBox = ({ name, region }: { name: string; region: string }) => {
   const router = useRouter();
+  const pathName = usePathname();
 
   const [query, setQuery] = useState(name);
 
@@ -13,17 +16,19 @@ const SearchBox = ({ name, region }: { name: string; region: string }) => {
     const timeout = setTimeout(() => {
       if (!query) {
         if (!region) {
-          router.replace("/");
+          router.replace(removeFromQuery(pathName, "name"));
         }
       } else {
-        router.replace(`/name/${query}`, { forceOptimisticNavigation: true });
+        router.replace(
+          addOrUpdate(removeFromQuery(pathName, "region"), "name", query)
+        );
       }
     }, 500);
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [query, region, router]);
+  }, [query, region, router, pathName]);
 
   function handleChange(e: FormEvent<HTMLInputElement>) {
     setQuery(e.currentTarget.value);

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 type SelectProps = {
-  id: string;
   value: string;
   handleChange: (value: string) => void;
   options: { label: string; value: string }[];
@@ -17,7 +16,6 @@ const styleSheet = {
 };
 
 const Select = ({
-  id,
   value,
   options,
   placeHolder,
@@ -31,10 +29,10 @@ const Select = ({
   };
 
   return (
-    <div id={id} className={`relative select-none inline-block ${extraClass}`}>
+    <div className={`relative select-none inline-block ${extraClass}`}>
       <div
         onClick={toggleOpen}
-        className="bg-lightElement dark:bg-darkElement rounded shadow py-2 px-4 cursor-pointer text-center capitalize"
+        className="bg-lightElement dark:bg-darkElement rounded shadow p-2 cursor-pointer text-center capitalize"
       >
         <span>{value ? value : placeHolder}</span>
         {open ? (
@@ -47,7 +45,7 @@ const Select = ({
         <ul className="absolute bg-lightElement dark:bg-darkElement rounded shadow z-10 mt-2 w-full cursor-pointer capitalize">
           {options.map((option, index) => (
             <li
-              className="py-2 px-4 hover:bg-gray-200 dark:hover:bg-slate-600 rounded text-center"
+              className="py-2 hover:bg-gray-200 dark:hover:bg-slate-600 rounded text-center"
               key={index}
               onClick={() => {
                 handleChange(option.value);

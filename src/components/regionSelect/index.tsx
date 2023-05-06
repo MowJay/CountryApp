@@ -1,22 +1,26 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Select from "./../select/index";
+import { removeFromQuery, addOrUpdate } from "@/utils/queryUtils";
 
 const RegionSelect = ({ region }: { region: string }) => {
   const router = useRouter();
+  const pathName = usePathname();
 
   const handleChange = (value: string) => {
     if (value) {
-      router.replace(`/region/${value}`);
+      router.replace(
+        addOrUpdate(removeFromQuery(pathName, "name"), "region", value)
+      );
     } else {
-      router.replace("/");
+      router.replace(removeFromQuery(pathName, "region"));
     }
   };
 
   return (
     <Select
-      id="regionSelect"
       value={region}
       handleChange={handleChange}
       options={[

@@ -36,11 +36,11 @@ This project is deployed using [vercel](https://vercel.com/) and is available at
 
 ## Project Screen Shots
 
-![image](https://user-images.githubusercontent.com/40686963/236569969-f0f916e1-8514-4149-8f87-4d1057eeecb0.png)
+![image](https://user-images.githubusercontent.com/40686963/236593451-f54bdbaa-25b1-400a-97ce-f43764f4c080.png)
 
-![image](https://user-images.githubusercontent.com/40686963/236570179-084bf6d6-4e12-468b-b1ef-54e711368d68.png)
+![image](https://user-images.githubusercontent.com/40686963/236593487-4ce7a5fd-c851-4afe-b7a8-a7451cbf7e16.png)
 
-![image](https://user-images.githubusercontent.com/40686963/236570051-b84ccd15-4e74-4033-826a-2a5f53242a20.png)
+![image](https://user-images.githubusercontent.com/40686963/236593532-43b8ee33-563c-4833-83c0-4bbbc42b547a.png)
 
-![image](https://user-images.githubusercontent.com/40686963/236570258-74d7ed8f-5f1e-47d8-afb4-8644dce9edfd.png)
+![image](https://user-images.githubusercontent.com/40686963/236593508-41a74e2b-621b-444c-b93c-b7d197fffe46.png)
 

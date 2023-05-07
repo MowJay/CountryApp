@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 type SelectProps = {
@@ -23,13 +23,34 @@ const Select = ({
   extraClass,
 }: SelectProps) => {
   const [open, setOpen] = useState<boolean>(false);
+  const selectRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      selectRef.current &&
+      !selectRef.current.contains(event.target as Node)
+    ) {
+      setOpen(false);
+    }
+  };
 
   const toggleOpen = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
   return (
-    <div className={`relative select-none inline-block ${extraClass}`}>
+    <div
+      ref={selectRef}
+      className={`relative select-none inline-block ${extraClass}`}
+    >
       <div
         onClick={toggleOpen}
         className="bg-lightElement dark:bg-darkElement rounded shadow p-2 cursor-pointer text-center capitalize"
